@@ -1,0 +1,39 @@
+accounts:
+  - name: alice
+    coins: ["100000000uatom", "100000000000000000000pose"]
+  - name: bob
+    coins: ["5000000000000pose"]
+validator:
+  name: alice
+  staked: "100000000000000000000pose"
+faucet:
+  name: bob 
+  coins: ["10pose"]
+build:
+  binary: "bitommd"
+init:
+  home: "$HOME/.bitommd"
+  app:
+    evm-rpc:
+      address: "0.0.0.0:8545"     # change the JSON-RPC address and port
+      ws-address: "0.0.0.0:8546"  # change the JSON-RPC websocket address and port
+genesis:
+  chain_id: "composed_9000-1"
+  app_state:
+    staking:
+      params:
+        bond_denom: "bitomm"
+    mint:
+      params:
+        mint_denom: "bitomm"
+    crisis:
+      constant_fee:
+        denom: "bitomm"
+    gov:
+      deposit_params:
+        min_deposit:
+          - amount: "10000000"
+            denom: "bitomm"
+    evm:
+      params:
+        evm_denom: "bitomm"
